@@ -23,9 +23,7 @@ var cloud;
 
 function setup() {
 	createCanvas(1024, 576);
-	floorPos_y = 432; //NB. we are now using a variable for the floor position
-
-	//NB. We are now using the built in variables height and width
+	floorPos_y = 432;
 	gameChar_x = width/2;
 	gameChar_y = floorPos_y;
 
@@ -43,23 +41,32 @@ function setup() {
 		y_pos: floorPos_y,
 		size: 30,
 	}
+	cloud = {
+		x_pos: 150,
+		y_pos: 100,
+	}
 }
 
 function draw()
 {
 	background(100, 155, 255); //fill the sky blue
-	clouds(150, 100)
-	mountains(150, floorPos_y)
+
+	clouds(cloud.x_pos, cloud.y_pos);
+	mountains(150, floorPos_y);
+	
+	// ground
 	noStroke();
 	fill(0, 155, 0);
 	rect(0, floorPos_y, width - canyon.width, height - floorPos_y); //draw some green ground
-	drawCanyon(canyon.x_pos, canyon.y_pos, canyon.width, canyon.height)
-	tree(treePos_x, treePos_y)
-	drawcollactable(collectable.x_pos, collectable.y_pos, collectable.size)
-	drawCharecter(gameChar_x, gameChar_y)
+	
+	drawCanyon(canyon.x_pos, canyon.y_pos, canyon.width, canyon.height);
+	tree(treePos_x, treePos_y);
+	
+	drawcollactable(collectable.x_pos, collectable.y_pos, collectable.size);
+	drawCharecter(gameChar_x, gameChar_y);
 }
 
 function mousePressed() {
-	gameChar_x = mouseX
-	gameChar_y = mouseY
+	gameChar_x = mouseX;
+	gameChar_y = mouseY;
 }
